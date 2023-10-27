@@ -11,13 +11,11 @@ const PORT = 3000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        arcgisApiKey: process.env.ARCGIS
+app.get('/api/keys/arcgis', (req, res) => {
+    res.send ({arcgisApiKey: process.env.ARCGIS
     });
-
 });
 
 app.post('/upload', upload.single('photo'), (req, res) => {
