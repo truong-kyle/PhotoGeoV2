@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhotoGeo V2</title>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.28/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.28/"></script>
+  </head>
+  <body>
+    <input type="file" id="imageInput" accept="image/*" />
+    <button onclick="uploadImage()">Upload and Get Geotag</button>
+    <b id="result"></b>
+    <div id="viewDiv" style="width: 75vw; height: 75vh">
+      <button onClick="updateMap()">Update Map</button>
+    </div>
+
+    <script>
+      let view;
+      require(["esri/config", "esri/WebMap", "esri/views/MapView"], function (
+        esriConfig,
+        WebMap,
+        MapView
+      ) {
+        esriConfig.apiKey = "<%=arcgisApiKey%>";
+
+        var map = new WebMap({
+          portalItem: {
+            // id for webmap
+            id: "b7f7248553d84c37b8c823eff8562407",
+          },
+        });
+
+        view = new MapView({
+          map: map,
+          center: [-79.41866, 43.678352], // Longitude, latitude
+          zoom: 5, // Zoom level
+          container: "viewDiv",
+        });
+      });
+
+      function updateMap(lat, lon) {
+        view.goTo({
+          center: [lon, lat],
+          zoom: 13,
+        });
+      }
+
+      function uploadImage() {
+        const formData = new FormData();
+        const imageInput = document.getElementById("imageInput");
+        formData.append("photo", imageInput.files[0]);
+        fetch("/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById(
+              "result"
+            ).textContent = `Geotag data stored`;
+            updateMap(data.latitude, data.longitude)
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("result").textContent =
+              "No geotag data found";
+          });
+      }
+
+      
+    </script>
+  </body>
+</html>
