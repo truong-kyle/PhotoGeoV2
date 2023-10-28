@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PhotoGeo V2</title>
-    <link rel="stylesheet" href = "styles.css"/>
+    <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://js.arcgis.com/4.28/esri/themes/light/main.css"
@@ -13,13 +13,29 @@
   </head>
   <body>
     <input type="file" id="imageInput" accept="image/*" />
-    <button onclick="uploadImage()">Upload and Get Geotag</button>
+    <div>
+      <img
+        id="imagePreview"
+        src=""
+        alt="Image Preview"
+        style="max-height: 300px; display: none"
+      />
+      <button id="uploadButton" onclick="uploadImage()">
+        Upload to PhotoMap
+      </button>
+    </div>
     <b id="result"></b>
 
     <div id="viewDiv" style="width: 75vw; height: 75vh">
       <button onClick="toggleFire()">Wildfire Mode</button>
+      <div id="flame">
+        <img
+          src="./assets/flame.png"
+          style="max-width: 25px; position: relative; left: 35%"
+        />
+      </div>
     </div>
-    <script src = "source.js"></script>
-    
+
+    <script src="source.js"></script>
   </body>
 </html>

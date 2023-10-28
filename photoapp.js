@@ -11,12 +11,18 @@ const PORT = 3000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+let firemode;
+
 app.use(express.static('public'));
 
 app.get('/api/keys/arcgis', (req, res) => {
     res.send ({arcgisApiKey: process.env.ARCGIS
     });
 });
+
+app.get('/mode/fire'), (req, res) => {
+
+}
 
 app.post('/upload', upload.single('photo'), (req, res) => {
     //Uses EXIF.js to scrape photo for geotag information
