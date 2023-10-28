@@ -1,35 +1,37 @@
-let view, apiKey;
+let view;
 
-  fetch('/api/keys/arcgis')
+  window.onload = fetch('/api/keys/arcgis')
     .then(response => response.json())
     .then(data => {
-        apiKey = data.arcgisApiKey;
-        // Use your API key here
+        initMap(data.arcgisApiKey);
     })
     .catch(error => console.error('Error fetching API key:', error));
 
-require(["esri/config", "esri/WebMap", "esri/views/MapView"], function (
-  esriConfig,
-  WebMap,
-  MapView
-) {
-
-  esriConfig.apiKey = apiKey;
-
-  var map = new WebMap({
-    portalItem: {
-      // id for webmap
-      id: "b7f7248553d84c37b8c823eff8562407",
-    },
+function initMap(api){
+  require(["esri/config", "esri/WebMap", "esri/views/MapView"], function (
+    esriConfig,
+    WebMap,
+    MapView
+  ) {
+  
+    esriConfig.apiKey = api;
+  
+    var firemap = new WebMap({
+      portalItem: {
+        // id for webmap
+        id: "b7f7248553d84c37b8c823eff8562407",
+      },
+    });
+  
+    view = new MapView({
+      map: firemap,
+      center: [-79.41866, 43.678352], // Longitude, latitude
+      zoom: 5, // Zoom level
+      container: "viewDiv",
+    });
   });
+}
 
-  view = new MapView({
-    map: map,
-    center: [-79.41866, 43.678352], // Longitude, latitude
-    zoom: 5, // Zoom level
-    container: "viewDiv",
-  });
-});
 
 function updateMap(lat, lon) {
   view.goTo({

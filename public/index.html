@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PhotoGeo V2</title>
+    <link rel="stylesheet" href = "styles.css"/>
     <link
       rel="stylesheet"
       href="https://js.arcgis.com/4.28/esri/themes/light/main.css"
@@ -14,8 +15,9 @@
     <input type="file" id="imageInput" accept="image/*" />
     <button onclick="uploadImage()">Upload and Get Geotag</button>
     <b id="result"></b>
+
     <div id="viewDiv" style="width: 75vw; height: 75vh">
-      <button onClick="updateMap()">Update Map</button>
+      <button onClick="toggleFire()">Wildfire Mode</button>
     </div>
     <script src = "source.js"></script>
     

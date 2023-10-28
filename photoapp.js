@@ -33,7 +33,8 @@ app.post('/upload', upload.single('photo'), (req, res) => {
                     if (gps.GPSLatitudeRef == "S") lat = -lat;
                     if (gps.GPSLongitudeRef == "W") lon = -lon;
                     //Return values to HTML page and store them in the console.log
-                    res.json({ latitude: lat, longitude: lon });              
+                    res.json({ latitude: lat, longitude: lon });    
+                     
                 } 
                 else {
                     res.send('No geotag data found.');
@@ -44,9 +45,6 @@ app.post('/upload', upload.single('photo'), (req, res) => {
         res.send('Error processing image.');
     }
 });
-
-
-
 
 app.listen(PORT, () => {
     console.log(`Server started on http://localhost:${PORT}`);
