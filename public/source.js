@@ -1,6 +1,6 @@
 let view, firemap, map, firemode;
 
-  window.onload = fetch('/api/keys/arcgis')
+  window.onload = fetch('/apis/arcgis')
     .then(response => response.json())
     .then(data => {
         initMap(data.arcgisApiKey);
@@ -71,7 +71,6 @@ function toggleFire(){
   }
 }
 
-
 function updateMap(lat, lon) {
   view.goTo({
     center: [lon, lat],
@@ -90,7 +89,13 @@ function uploadImage() {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("result").textContent = `Geotag data stored`;
-      updateMap(data.latitude, data.longitude);
+      updateMap(data.dataLat, data.dataLon);
+      if(data.dataLat && data.dataLon){
+        document.getElementById("fireResult").textContent = `Fire detected near hotspot ${data.dataLat}, ${data.dataLon}`
+      }
+      else{
+        document.getElementById("fireResult").textContent = data.message;
+      }
     })
     .catch((error) => {
       console.error("Error:", error);

@@ -27,12 +27,19 @@
     <b id="result"></b>
 
     <div id="viewDiv" style="width: 75vw; height: 75vh">
-      <button onClick="toggleFire()">Wildfire Mode</button>
-      <div id="flame">
-        <img
-          src="./assets/flame.png"
-          style="max-width: 25px; position: relative; left: 35%"
-        />
+      <div style="width: 200px;">
+        <button onClick="toggleFire()">Wildfire Mode</button>
+        <div id="flame">
+          <img
+            src="./assets/flame.png"
+            style="max-width: 25px; position: relative;"
+          />
+          <br />
+          <b
+            style="text-align: center; overflow-wrap: break-word;"
+            id="fireResult"
+          ></b>
+        </div>
       </div>
     </div>
 
