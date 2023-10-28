@@ -2,12 +2,54 @@
 * {
   font-family: "IBM Plex Sans";
 }
-
-#flame {
-  padding-top: 10px;
+.mode{
+  height:20px;
+  padding: 5px 0;
+  font-size:20px;
+  margin: 10px;
 }
 
-#fireresult {
-  text-align: center;
-  max-width: 100px;
+#clickme{
+  cursor: pointer;
+}
+
+#clickme:hover{
+  text-decoration: underline;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 5px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 70%;
+  height: 75vh;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+ #sidebar, #mapdiv {
+    width: 100vw;
+  }
+}
+
+#flame{
+  height:20px;
+  display: inline;
+  position: relative;
+  left: 10px;
 }

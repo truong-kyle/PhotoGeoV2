@@ -53,14 +53,14 @@ function initMap(api){
       map: blankmap,
       center: [-79.41866, 43.678352], // Longitude, latitude
       zoom: 5, // Zoom level
-      container: "viewDiv",
+      container: "mapDiv",
     });
   });
 }
 
 function toggleFire(){
   if (firemode.style.display == "none"){
-    firemode.style.display = "block";
+    firemode.style.display = "inline-block";
     view.map = firemap;
     uploadButton.textContent="Search for Hotspots"
   }

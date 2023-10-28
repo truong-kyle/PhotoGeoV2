@@ -12,37 +12,29 @@
     <script src="https://js.arcgis.com/4.28/"></script>
   </head>
   <body>
-    <input type="file" id="imageInput" accept="image/*" />
-    <div>
-      <img
-        id="imagePreview"
-        src=""
-        alt="Image Preview"
-        style="max-height: 300px; display: none"
-      />
-      <button id="uploadButton" onclick="uploadImage()">
-        Upload to PhotoMap
-      </button>
+    <div class="mode">
+      <a id="clickme" onClick="toggleFire()">Wildfire Mode</a>
+      <img id="flame" src="./assets/flame.png" />
     </div>
-    <b id="result"></b>
-
-    <div id="viewDiv" style="width: 75vw; height: 75vh">
-      <div style="width: 200px;">
-        <button onClick="toggleFire()">Wildfire Mode</button>
-        <div id="flame">
-          <img
-            src="./assets/flame.png"
-            style="max-width: 25px; position: relative;"
-          />
-          <br />
-          <b
-            style="text-align: center; overflow-wrap: break-word;"
-            id="fireResult"
-          ></b>
-        </div>
+    <div class = "row">
+      <div class="column side">
+        <input type="file" id="imageInput" accept="image/*" />
+        <img
+          id="imagePreview"
+          src=""
+          alt="Image Preview"
+          style="max-height: 300px; display: none"
+        />
+        <button id="uploadButton" onclick="uploadImage()">
+          Upload to PhotoMap
+        </button>
+        <a id="result"></a>
+        <br/>
+        <b id="fireResult"></b>
       </div>
-    </div>
 
+      <div class="column middle" id="mapDiv"></div>
+    </div>
     <script src="source.js"></script>
   </body>
 </html>
