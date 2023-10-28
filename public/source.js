@@ -50,7 +50,7 @@ function initMap(api){
     })
   
     view = new MapView({
-      map: firemap,
+      map: blankmap,
       center: [-79.41866, 43.678352], // Longitude, latitude
       zoom: 5, // Zoom level
       container: "viewDiv",
