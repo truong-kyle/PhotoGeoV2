@@ -17,33 +17,29 @@
   text-decoration: underline;
 }
 
-/* Create three unequal columns that floats next to each other */
 .column {
   float: left;
-  padding: 5px;
+  padding: 10px;
 }
 
-/* Left and right column */
 .column.side {
   width: 25%;
 }
 
-/* Middle column */
 .column.middle {
   width: 70%;
   height: 75vh;
 }
 
-/* Clear floats after the columns */
 .row::after {
   content: "";
   display: table;
   clear: both;
 }
 
-@media screen and (max-width: 600px) {
- #sidebar, #mapdiv {
-    width: 100vw;
+@media screen and (width: 600px) {
+ .column {
+    width: 100%;
   }
 }
 
