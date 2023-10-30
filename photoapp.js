@@ -1,7 +1,8 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const exif = require('exif').ExifImage;
-const multer = require('multer');
+import fetch from 'node-fetch';
+import express from 'express';
+import dotenv from 'dotenv';
+import exif from 'exif';
+import multer from 'multer';
 
 dotenv.config();
 

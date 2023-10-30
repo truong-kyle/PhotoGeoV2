@@ -3,6 +3,7 @@
   "version": "20.0",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node photoapp.js",
@@ -22,4 +23,5 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
+
 }
