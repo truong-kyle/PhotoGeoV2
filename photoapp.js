@@ -2,12 +2,12 @@ const express = require('express');
 const dotenv = require('dotenv');
 const exif = require('exif').ExifImage;
 const multer = require('multer');
-const fetch = require('node-fetch');
+const fetch  = require('node-fetch');
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
