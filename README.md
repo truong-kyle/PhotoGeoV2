@@ -8,7 +8,8 @@ Refactored improved version of the 2023 SpaceApps Project <br>
 * New security update: uses .env file to access APIs rather than an external .js file
 * New Layout: items are positioned horizontally to avoid screen scrolling
 
-## Known Bugs
+## Known Bugs/Issues
 * Missing photo pin dropping
 * Missing "normal" mode
 * Layout does not update if screen is too small to fit content
+* iOS users cannot upload photos directly to the webserver due to security issues
