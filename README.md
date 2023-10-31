@@ -1,6 +1,6 @@
 # PhotoMapper v2.0
-Refactored improved version of the 2023 SpaceApps Project
-**Website:** https://spaceninjas.onrender.com (May be a little slow to initiate)
+Refactored improved version of the 2023 SpaceApps Project <br>
+**Website:** https://spaceninjas.onrender.com (May be a little slow to initiate due to render tier)
 
 ## What's different?
 * In the original project, due to time constraints most of the code was written in the front-end
@@ -9,7 +9,6 @@ Refactored improved version of the 2023 SpaceApps Project
 * New Layout: items are positioned horizontally to avoid screen scrolling
 
 ## Known Bugs
-* Result only prints if successful find of hotspot data
 * Missing photo pin dropping
-* Missing toggle between fire and normal mode
+* Missing "normal" mode
 * Layout does not update if screen is too small to fit content

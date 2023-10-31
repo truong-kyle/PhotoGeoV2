@@ -1,15 +1,17 @@
 let view, firemap, map, firemode;
+firemode = document.getElementById("flame");
+firemode.style.display = "none";
+uploadButton = document.getElementById("uploadButton")
 
   window.onload = fetch('/apis/arcgis')
     .then(response => response.json())
     .then(data => {
         initMap(data.arcgisApiKey);
+        toggleFire();
     })
     .catch(error => console.error('Error fetching API key:', error));
 
-    firemode = document.getElementById("flame");
-    firemode.style.display = "none";
-    uploadButton = document.getElementById("uploadButton")
+
 
     document
     .getElementById("imageInput")
@@ -50,7 +52,7 @@ function initMap(api){
     })
   
     view = new MapView({
-      map: blankmap,
+      map: firemap,
       center: [-79.41866, 43.678352], // Longitude, latitude
       zoom: 5, // Zoom level
       container: "mapDiv",
@@ -88,17 +90,24 @@ function uploadImage() {
   })
     .then((response) => response.json())
     .then((data) => {
-      document.getElementById("result").textContent = `Geotag data stored`;
-      updateMap(data.dataLat, data.dataLon);
-      if(data.dataLat && data.dataLon){
-        document.getElementById("fireResult").textContent = `Fire detected near hotspot ${data.dataLat}, ${data.dataLon}`
-      }
-      else{
-        document.getElementById("fireResult").textContent = data.message;
-      }
+      document.getElementById("result").textContent = data.message;
+     checkFires();
     })
     .catch((error) => {
       console.error("Error:", error);
       document.getElementById("result").textContent = "No geotag data found";
+      document.getElementById("fireResult").textContent = "";
     });
+}
+
+function checkFires(){
+  fetch("/checkfire").then((response) => response.json()).then(data => {
+    if(data.dataLat && data.dataLon){
+      updateMap(data.dataLat, data.dataLon);
+      document.getElementById("fireResult").textContent = `Fire detected near hotspot ${data.dataLat}, ${data.dataLon}`
+    }
+    else{
+      document.getElementById("fireResult").textContent = data.message;
+    }
+  });
 }
