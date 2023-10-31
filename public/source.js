@@ -1,7 +1,6 @@
 let view, firemap, map, firemode;
 firemode = document.getElementById("flame");
 firemode.style.display = "none";
-uploadButton = document.getElementById("uploadButton")
 
   window.onload = fetch('/apis/arcgis')
     .then(response => response.json())
@@ -10,8 +9,6 @@ uploadButton = document.getElementById("uploadButton")
         toggleFire();
     })
     .catch(error => console.error('Error fetching API key:', error));
-
-
 
     document
     .getElementById("imageInput")
@@ -64,13 +61,13 @@ function toggleFire(){
   if (firemode.style.display == "none"){
     firemode.style.display = "inline-block";
     view.map = firemap;
-    uploadButton.textContent="Search for Hotspots"
+    document.getElementById("uploadButton").textContent="Search for Hotspots"
     document.getElementById("clickme").textContent = "Wildfire Mode"
   }
   else{
     firemode.style.display = "none";
     view.map = blankmap;
-    uploadButton.textContent="Upload to Photo Map"
+    document.getElementById("uploadButton").textContent="Upload to Photo Map"
     document.getElementById("clickme").textContent = "Normal Mode"
   }
 }
