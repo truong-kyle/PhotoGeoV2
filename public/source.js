@@ -65,11 +65,13 @@ function toggleFire(){
     firemode.style.display = "inline-block";
     view.map = firemap;
     uploadButton.textContent="Search for Hotspots"
+    document.getElementById("clickme").textContent = "Wildfire Mode"
   }
   else{
     firemode.style.display = "none";
     view.map = blankmap;
     uploadButton.textContent="Upload to Photo Map"
+    document.getElementById("clickme").textContent = "Normal Mode"
   }
 }
 
