@@ -13,3 +13,4 @@ Refactored improved version of the 2023 SpaceApps Project <br>
 * Missing "normal" mode
 * Layout does not update if screen is too small to fit content
 * iOS users cannot upload photos directly to the webserver due to security issues
+* When uploading some photos, both the "No Geotag" and "No fire data" message show up
