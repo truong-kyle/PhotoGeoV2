@@ -58,9 +58,9 @@ async function getFire(x, y) {
   }
 }
 
-app.post("/upload", upload.single("photo"), async (req, res) => {
+app.post("/upload", upload.single("photo"), (req, res) => {
   try {
-    new exif({ image: req.file.buffer }, async (error, exifData) => {
+    new exif({ image: req.file.buffer }, (error, exifData) => {
       if (error) {
         return res.send("Error: " + error.message);
       }
