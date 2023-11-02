@@ -60,6 +60,7 @@ function initMap(api){
 function toggleFire(){
   if (firemode.style.display == "none"){
     firemode.style.display = "inline-block";
+    document.getElementById("clickme").style.color = 'orange';
     view.map = firemap;
     document.getElementById("uploadButton").textContent="Search for Hotspots"
     document.getElementById("clickme").textContent = "Wildfire Mode"
@@ -69,13 +70,14 @@ function toggleFire(){
     view.map = blankmap;
     document.getElementById("uploadButton").textContent="Upload to Photo Map"
     document.getElementById("clickme").textContent = "Normal Mode"
+    document.getElementById("clickme").style.color = "lightblue"
   }
 }
 
 function updateMap(lat, lon) {
   view.goTo({
     center: [lon, lat],
-    zoom: 13,
+    zoom: 15,
   });
 }
 
@@ -90,7 +92,16 @@ function uploadImage() {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("result").textContent = data.message;
-     checkFires();
+      if (firemode.style.display == "inline-block"){
+        checkFires();
+      }
+      else {
+        fetch("/getloc").then((response) => response.json()).then(data =>{
+          updateMap(data.lat, data.lon);
+          document.getElementById("fireResult").textContent = `Photo taken at ${data.lat.toFixed(5)}, ${data.lon.toFixed(5)}`;
+        })
+      }
+     
     })
     .catch((error) => {
       console.error("Error:", error);

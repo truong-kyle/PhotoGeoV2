@@ -97,6 +97,10 @@ app.get("/checkfire", async (req, res) => {
   }
 });
 
+app.get("/getloc", (req, res) =>{
+  res.json({lat, lon});
+})
+
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
 });
