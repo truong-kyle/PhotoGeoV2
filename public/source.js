@@ -57,7 +57,14 @@ function initMap(api){
   });
 }
 
+function clearText(){
+  document.getElementByID("result").textContent = "";
+  document.getElementByID("fireresult").textContent = "";
+  document.getElementByID("imagePreview).style.display = "none";
+}
+
 function toggleFire(){
+  clearText();
   if (firemode.style.display == "none"){
     firemode.style.display = "inline-block";
     document.getElementById("clickme").style.color = 'orange';
