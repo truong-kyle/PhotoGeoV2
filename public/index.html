@@ -11,12 +11,101 @@
     />
     <script src="https://js.arcgis.com/4.28/"></script>
   </head>
-  <body>
+
+  <body style="padding: 10px">
+    <div id="help" onclick="helpOff()">
+      <div
+        style="
+          position: absolute;
+          left: 180px;
+          top: 10px;
+          font-weight: bold;
+          font-size: larger;
+        "
+      >
+        <table>
+          <tr>
+            <td>←</td>
+            <td>Click here to change phototag modes:</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <span style="color: lightblue"> Normal </span> or
+              <span style="color: orange"> Wildfire</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div
+        style="
+          position: relative;
+          left: 20px;
+          top: 80px;
+          font-weight: bold;
+          font-size: larger;
+        "
+      >
+        <table>
+          <tr>
+            <td>↑</td>
+            <td>↑</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 40px">Click to upload photo</td>
+            <td>Click to place photo on map</td>
+          </tr>
+        </table>
+      </div>
+      <div id="helptext">
+        <h1 id="helptitle">How to use this Website</h1>
+        <ul style="display: table; text-align: left; margin: auto">
+          <li>
+            Ensure that photos being uploaded have a location recorded with
+            them. <br />
+            <ul>
+              <li>
+                <i
+                  >(You can check this by looking at the location data within
+                  your Photos app)</i
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Due to a security issue on iOS, this app only works on Mac, Windows,
+            Linux and Android
+          </li>
+          <li>No location data is stored after closing the website.</li>
+        </ul>
+        <br />
+        <i>Click anywhere to close</i>
+      </div>
+      <div
+        style="
+          position: absolute;
+          left: 70px;
+          bottom: 17px;
+          font-weight: bold;
+          font-size: large;
+          display: block;
+        "
+      >
+        <span>← Get help and demos</span>
+      </div>
+    </div>
+
     <div class="mode">
-      <a id="clickme" onClick="toggleFire()" style="color:orange">Wildfire Mode</a>
+      <a
+        id="clickme"
+        onClick="toggleFire()"
+        style="color: orange"
+        title="Click to switch to Normal Mode"
+        >Wildfire Mode</a
+      >
       <img id="flame" src="./assets/flame.png" />
     </div>
-    <div class = "row">
+    <div class="row">
       <div class="column side">
         <input type="file" id="imageInput" accept="image/*" />
         <img
@@ -29,13 +118,66 @@
           Search for Hotspots
         </button>
         <a id="result"></a>
-        <br/>
+        <br />
         <b id="fireResult"></b>
       </div>
 
       <div class="column middle" id="mapDiv"></div>
     </div>
-    <div style="position:fixed; bottom: 0px; right: 10px; text-align: right;"><p>SpaceNinjas 2023</p></div>
+
+    <div
+      style="
+        position: fixed;
+        bottom: 5px;
+        max-width: 60%;
+        display: inline-block;
+      "
+    >
+      <div id="menuList" class="menuList">
+        <a
+        class = "menuItem"
+          style="color: black"
+          title="Opens in a new window"
+          href="https://drive.google.com/file/d/1z4YpFJfuM1cRAX4IGxsYBYqljs8uGi-V/view"
+          target="_blank"
+          >Software Demo</a
+        >
+        <br />
+        <a
+        class="menuItem"
+          style="color: black"
+          title="Opens in a new window"
+          href="https://drive.google.com/file/d/1wBR9sZp4oRDXAVBJg3YqrYILwswpsKb9/view"
+          target="_blank"
+          >Hardware Demo</a
+        >
+        <br />
+        <a
+        class="menuItem"
+          onclick="helpOn()"
+          style="cursor: pointer; text-decoration: underline"
+          title="Open help window"
+          >Help</a
+        >
+      </div>
+      <img
+      id="menuIcon"
+        src="./assets/menubar.png"
+        onclick="openMenu()"
+        style="max-width: 40px; cursor: pointer; position: relative"
+      />
+      <div
+        style="
+          position: fixed;
+          right: 20px;
+          text-align: right;
+          display: inline-block;
+          bottom: 10px;
+        "
+      >
+        <a>SpaceNinjas 2023</a>
+      </div>
+    </div>
     <script src="source.js"></script>
   </body>
 </html>
