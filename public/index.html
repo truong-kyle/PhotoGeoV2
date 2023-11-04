@@ -15,13 +15,7 @@
   <body style="padding: 10px">
     <div id="help" onclick="helpOff()">
       <div
-        style="
-          position: absolute;
-          left: 180px;
-          top: 10px;
-          font-weight: bold;
-          font-size: larger;
-        "
+        id = "modeHelp"
       >
         <table>
           <tr>
@@ -48,11 +42,18 @@
       >
         <table>
           <tr>
-            <td>↑</td>
-            <td>↑</td>
+            <td style="text-decoration: underline;">Button Name</td>
+            <td></td>
+            <td style="text-decoration: underline;">What it does</td>
           </tr>
           <tr>
-            <td style="padding-right: 40px">Click to upload photo</td>
+            <td >Browse...</td>
+            <td>&rArr;</td>
+            <td>Click to upload photo</td>
+          </tr>
+          <tr>
+            <td style="padding-right:10px">Search For Hotspots</td>
+            <td>&rArr;</td>
             <td>Click to place photo on map</td>
           </tr>
         </table>
@@ -65,10 +66,9 @@
             them. <br />
             <ul>
               <li>
-                <i
-                  >(You can check this by looking at the location data within
-                  your Photos app)</i
-                >
+                (You can check this by looking at the location data within
+                  your <i>Photos</i> app)
+                
               </li>
             </ul>
           </li>
@@ -80,6 +80,9 @@
         </ul>
         <br />
         <i>Click anywhere to close</i>
+      </div>
+      <div id="mapHelp">
+        <span>&uarr; Click and drag to explore the map</span>
       </div>
       <div
         style="
