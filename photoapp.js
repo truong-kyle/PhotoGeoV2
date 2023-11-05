@@ -29,9 +29,9 @@ app.get("/mapmode"),
     res.send("Hello");
   };
 
-async function getFire(x, y) {
+async function parseCSV(url) {
   try {
-    const response = await fetch(process.env.NASA_FIRMS);
+    const response = await fetch(url);
     const csvData = await response.text();
 
     const rows = csvData.split("\n");
@@ -44,18 +44,29 @@ async function getFire(x, y) {
       }, {});
     });
 
-    for (let item of data) {
-      const dataLat = parseFloat(item.latitude);
-      const dataLon = parseFloat(item.longitude);
-      if (Math.abs(dataLat - x) < 0.2 && Math.abs(dataLon - y) < 0.2) {
-        return { dataLat, dataLon };
-      }
-    }
-    return null;
+    return data;
   } catch (error) {
-    console.error("Error fetching or processing data:", error);
-    return null;
+    console.error("Error fetching or parsing CSV data:", error);
+    return [];
   }
+}
+
+async function getFire(x, y) {
+  const modisUrl = process.env.NASA_MODIS;
+  const snppUrl = process.env.NASA_SNPP;
+
+  const modisData = await parseCSV(modisUrl);
+  const snppData = await parseCSV(snppUrl);
+  const allData = modisData.concat(snppData);
+
+  for (let item of allData) {
+    const dataLat = parseFloat(item.latitude);
+    const dataLon = parseFloat(item.longitude);
+    if (Math.abs(dataLat - x) < 0.2 && Math.abs(dataLon - y) < 0.2) {
+      return { dataLat, dataLon };
+    }
+  }
+  return null;
 }
 
 app.post("/upload", upload.single("photo"), (req, res) => {
@@ -97,9 +108,9 @@ app.get("/checkfire", async (req, res) => {
   }
 });
 
-app.get("/getloc", (req, res) =>{
-  res.json({lat, lon});
-})
+app.get("/getloc", (req, res) => {
+  res.json({ lat, lon });
+});
 
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
