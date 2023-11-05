@@ -145,7 +145,7 @@ function openMenu() {
     document.getElementById("menuIcon").style.opacity = 1;
   } else {
     document.getElementById("menuList").style.visibility = "visible";
-    document.getElementById("menuIcon").style.opacity = 0.5;
+    document.getElementById("menuIcon").style.opacity = 0.7;
     document.getElementById("menuList").style.opacity = 1;
   }
 }

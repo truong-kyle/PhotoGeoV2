@@ -28,12 +28,27 @@
             </td>
           </tr>
         </table>
+        <div
+        style="
+          position: fixed;
+          right: 25px;
+          top: 55px;
+          font-weight: bold;
+          font-size: large;
+          display: block;
+          text-align: right;
+          line-height: 14px;
+        "
+      >
+      &uarr;<br>
+        <span>Get help and demos </span>
+      </div>
       </div>
       <div
         style="
           position: relative;
           left: 20px;
-          top: 80px;
+          top: 100px;
           font-weight: bold;
           font-size: larger;
         "
@@ -81,18 +96,7 @@
       <div id="mapHelp">
         <span>&uarr; Click and drag to explore the map</span>
       </div>
-      <div
-        style="
-          position: absolute;
-          left: 70px;
-          bottom: 17px;
-          font-weight: bold;
-          font-size: large;
-          display: block;
-        "
-      >
-        <span>← Get help and demos</span>
-      </div>
+      
     </div>
 
     <div class="mode">
@@ -104,6 +108,41 @@
         >Wildfire Mode</a
       >
       <img id="flame" src="./assets/flame.png" />
+      <img
+        id="menuIcon"
+        src="./assets/menubar.png"
+        onclick="openMenu()"
+        style="max-width: 40px; cursor: pointer; position: absolute; display: inline-block; right: 10px;"
+        
+      />
+      <div id="menuList" class="menuList">
+        <a
+          class="menuItem"
+          style="color: black"
+          title="Opens in a new window"
+          href="https://drive.google.com/file/d/1z4YpFJfuM1cRAX4IGxsYBYqljs8uGi-V/view"
+          target="_blank"
+          >Software Demo</a
+        >
+        <br />
+        <a
+          class="menuItem"
+          style="color: black"
+          title="Opens in a new window"
+          href="https://drive.google.com/file/d/1wBR9sZp4oRDXAVBJg3YqrYILwswpsKb9/view"
+          target="_blank"
+          >Hardware Demo</a
+        >
+        <br />
+        <a
+          class="menuItem"
+          onclick="helpOn()"
+          style="cursor: pointer; text-decoration: underline"
+          title="Open help window"
+          >Help</a
+        >
+      </div>
+      
     </div>
     <div class="row">
       <div class="column side">
@@ -133,39 +172,7 @@
         display: inline-block;
       "
     >
-      <div id="menuList" class="menuList">
-        <a
-          class="menuItem"
-          style="color: black"
-          title="Opens in a new window"
-          href="https://drive.google.com/file/d/1z4YpFJfuM1cRAX4IGxsYBYqljs8uGi-V/view"
-          target="_blank"
-          >Software Demo</a
-        >
-        <br />
-        <a
-          class="menuItem"
-          style="color: black"
-          title="Opens in a new window"
-          href="https://drive.google.com/file/d/1wBR9sZp4oRDXAVBJg3YqrYILwswpsKb9/view"
-          target="_blank"
-          >Hardware Demo</a
-        >
-        <br />
-        <a
-          class="menuItem"
-          onclick="helpOn()"
-          style="cursor: pointer; text-decoration: underline"
-          title="Open help window"
-          >Help</a
-        >
-      </div>
-      <img
-        id="menuIcon"
-        src="./assets/menubar.png"
-        onclick="openMenu()"
-        style="max-width: 40px; cursor: pointer; position: relative"
-      />
+      
       <div
         style="
           position: fixed;
