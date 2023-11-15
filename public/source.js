@@ -1,13 +1,9 @@
 let view, firemap, map, firemode;
 firemode = document.getElementById("flame");
-firemode.style.display = "none";
 
 window.onload = fetch("/apis/arcgis")
   .then((response) => response.json())
-  .then((data) => {
-    initMap(data.arcgisApiKey);
-    toggleFire();
-  })
+  .then((data) =>initMap(data.arcgisApiKey))
   .catch((error) => console.error("Error fetching API key:", error));
 
 document
@@ -59,9 +55,9 @@ function initMap(api) {
 function toggleFire() {
   if (firemode.style.display == "none") {
     firemode.style.display = "inline-block";
+    view.map = firemap; 
     document.getElementById("clickme").style.color = "orange";
     document.getElementById("clickme").title = "Click to switch to Normal Mode";
-    view.map = firemap;
     document.getElementById("uploadButton").textContent = "Search for Hotspots";
     document.getElementById("clickme").textContent = "Wildfire Mode";
   } else {
@@ -102,10 +98,8 @@ function uploadImage() {
             updateMap(data.lat, data.lon);
             document.getElementById(
               "fireResult"
-            ).textContent = `Photo taken at ${data.lat.toFixed(
-              5
-            )}, ${data.lon.toFixed(5)}`;
-          });
+            ).textContent = `Photo taken at ${data.lat.toFixed(5)}, ${data.lon.toFixed(5)}`;
+          }).then(() => document.getElementById("fireResult").textContent = "");
       }
     })
     .catch((error) => {

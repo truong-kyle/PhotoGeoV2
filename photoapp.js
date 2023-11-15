@@ -14,20 +14,9 @@ const upload = multer({ storage: storage });
 
 app.use(express.static("public"));
 
-app.get("/apis/arcgis", (req, res) => {
-  res.send({ arcgisApiKey: process.env.ARCGIS });
-});
-
-app.get("/apis/firms", (req, res) => {
-  res.send({ firmsApiKey: process.env.NASA_FIRMS });
-});
-
-app.get("/mapmode"),
-  (req, res) => {
-    firemode = true;
-    console.log("firemode");
-    res.send("Hello");
-  };
+app.get("/apis/arcgis", (req, res) =>
+  res.send({ arcgisApiKey: process.env.ARCGIS })
+);
 
 async function parseCSV(url) {
   try {
@@ -108,10 +97,8 @@ app.get("/checkfire", async (req, res) => {
   }
 });
 
-app.get("/getloc", (req, res) => {
-  res.json({ lat, lon });
-});
+app.get("/getloc", (req, res) => res.json({ lat, lon }));
 
-app.listen(PORT, () => {
-  console.log(`Server started on http://localhost:${PORT}`);
-});
+app.listen(PORT, () =>
+  console.log(`Server started on http://localhost:${PORT}`)
+);
