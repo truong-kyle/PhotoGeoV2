@@ -99,7 +99,7 @@ function uploadImage() {
             document.getElementById(
               "fireResult"
             ).textContent = `Photo taken at ${data.lat.toFixed(5)}, ${data.lon.toFixed(5)}`;
-          }).then(() => document.getElementById("fireResult").textContent = "");
+          });
       }
     })
     .catch((error) => {
