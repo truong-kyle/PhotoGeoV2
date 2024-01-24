@@ -1,6 +1,7 @@
 # PhotoMapper v2.0
 Refactored and improved version of the 2023 SpaceApps Project <br>
 **Website:** https://spaceninjas.onrender.com (May be a little slow to initiate due to render tier)
+**UPDATE:** https://www.asc-csa.gc.ca/eng/news/articles/2023/2023-12-21-space-apps-challenge-2023-congratulations-to-the-winners.asp
 
 ## Description
 <b>Wildfire Mode 🔥:</b> Users are able to upload photos to the webapp, and using data provided by NASA's Fire Information and Resource Management System (FIRMS), compares the photo's location tag to a map of hotspots, built using the ARCgis for JavaScript SDK. Through this, users are able to determine if there photo was taken in an area at risk of a fire within the last 24 hours. <br>
