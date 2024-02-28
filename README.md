@@ -21,3 +21,4 @@ Refactored and improved version of the 2023 SpaceApps Project <br>
 ### Potential Improvements
 * Use the timestamp on the photo, to determine if the photo was taken after the time reported on the hotspot, to prevent false information.
 * Add the ability to store multiple photo locations, to allow the user to go back and view where their photos were taken.
+* Add some sort of machine learning to determine given coordinates, if user is in an area for a potential hotspot
